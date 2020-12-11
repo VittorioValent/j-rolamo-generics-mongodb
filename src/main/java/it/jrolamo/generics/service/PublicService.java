@@ -14,6 +14,7 @@ import it.jrolamo.generics.domain.AbstractDTO;
 import it.jrolamo.generics.domain.AbstractModel;
 import it.jrolamo.generics.mapper.IMapper;
 import it.jrolamo.generics.repositoy.IRepository;
+import it.jrolamo.generics.utils.PatchUtils;
 
 /**
  * This class implements all CRUD and common buisness methods from
@@ -41,8 +42,8 @@ public abstract class PublicService<Entity extends AbstractModel, DTO extends Ab
     @Autowired
     protected IRepository<Entity> repository;
 
-    // @Autowired
-    // PatchUtils<DTO> patchUtils;
+    @Autowired
+    PatchUtils<DTO> patchUtils;
 
     /**
      *
@@ -97,7 +98,7 @@ public abstract class PublicService<Entity extends AbstractModel, DTO extends Ab
      */
     @Override
     public DTO merge(Object id, DTO dto) {
-        // dto = patchUtils.applyPatch(read(id), dto);
+        dto = patchUtils.applyPatch(read(id), dto);
         return mapper.toDTO(repository.save(mapper.toEntity(dto)));
     }
 

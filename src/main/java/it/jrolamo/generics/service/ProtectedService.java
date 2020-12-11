@@ -45,7 +45,7 @@ public abstract class ProtectedService<Entity extends AbstractModel, DTO extends
     @Override
     @IsOwnerPreAuth
     public DTO merge(Object id, DTO dto) {
-        // dto = (DTO) patchUtils.applyPatch(read(id), dto);
+        dto = (DTO) patchUtils.applyPatch(read(id), dto);
         return mapper.toDTO(repository.save(mapper.toEntity(dto)));
     }
 }
