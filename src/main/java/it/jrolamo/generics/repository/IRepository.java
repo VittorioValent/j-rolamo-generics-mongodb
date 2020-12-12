@@ -1,5 +1,4 @@
-package it.jrolamo.generics.repositoy;
-
+package it.jrolamo.generics.repository;
 
 import com.querydsl.core.types.EntityPath;
 import com.querydsl.core.types.dsl.StringExpression;
@@ -29,9 +28,8 @@ import it.jrolamo.generics.domain.AbstractModel;
  * @since 0.0.1
  */
 @NoRepositoryBean
-public interface IRepository<Entity extends AbstractModel>
-        extends MongoRepository<Entity, Object>, QuerydslBinderCustomizer<EntityPath<Entity>>,
-        QuerydslPredicateExecutor<Entity>{ //, JpaSpecificationExecutor<Entity> {
+public interface IRepository<Entity extends AbstractModel> extends MongoRepository<Entity, Object>,
+        QuerydslBinderCustomizer<EntityPath<Entity>>, QuerydslPredicateExecutor<Entity> {
 
     /**
      *

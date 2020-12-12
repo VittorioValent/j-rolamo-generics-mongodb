@@ -1,4 +1,4 @@
-package it.jrolamo.generics.repositoy;
+package it.jrolamo.generics.repository;
 
 import com.querydsl.core.types.Predicate;
 import it.jrolamo.generics.annotations.IsOwnerListPostAuth;
