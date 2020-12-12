@@ -65,7 +65,7 @@ public abstract class PublicService<Entity extends AbstractModel, DTO extends Ab
      * @param id
      */
     @Override
-    public void delete(Object id) {
+    public void delete(String id) {
         repository.deleteById(id);
     }
 
@@ -75,7 +75,7 @@ public abstract class PublicService<Entity extends AbstractModel, DTO extends Ab
      * @return
      */
     @Override
-    public DTO read(Object id) {
+    public DTO read(String id) {
         // return mapper.toDTO(repository.findById(id).orElse(null));
         return mapper.toDTO(repository.findById(id).get());
     }
@@ -97,7 +97,7 @@ public abstract class PublicService<Entity extends AbstractModel, DTO extends Ab
      * @return
      */
     @Override
-    public DTO merge(Object id, DTO dto) {
+    public DTO merge(String id, DTO dto) {
         dto = patchUtils.applyPatch(read(id), dto);
         return mapper.toDTO(repository.save(mapper.toEntity(dto)));
     }

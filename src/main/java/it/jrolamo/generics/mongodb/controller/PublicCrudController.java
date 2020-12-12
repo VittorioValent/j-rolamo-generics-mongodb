@@ -40,7 +40,7 @@ public abstract class PublicCrudController<DTO extends AbstractDTO> extends Publ
      * @param id
      */
     @DeleteMapping("/public/delete/{id}")
-    public void delete(@RequestParam("id") Object id) {
+    public void delete(@RequestParam("id") String id) {
         service.delete(id);
     }
 
@@ -61,7 +61,7 @@ public abstract class PublicCrudController<DTO extends AbstractDTO> extends Publ
      * @return
      */
     @PatchMapping("/public/update")
-    public DTO merge(@RequestParam Object id, @RequestBody DTO dto) {
+    public DTO merge(@RequestParam String id, @RequestBody DTO dto) {
 
         return service.merge(id, dto);
     }

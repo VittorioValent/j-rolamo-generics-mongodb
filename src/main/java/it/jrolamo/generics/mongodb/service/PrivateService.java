@@ -34,7 +34,7 @@ public abstract class PrivateService<Entity extends AuditModel, DTO extends Audi
      */
     @Override
     @IsOwnerPostAuth
-    public DTO read(Object id) {
+    public DTO read(String id) {
         return mapper.toDTO(repository.findById(id).get());
     }
 

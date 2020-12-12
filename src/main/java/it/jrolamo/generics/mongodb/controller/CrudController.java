@@ -39,7 +39,7 @@ public abstract class CrudController<DTO extends AbstractDTO> extends ReadContro
      * @param id
      */
     @DeleteMapping("/delete/{id}")
-    public void delete(@RequestParam("id") Object id) {
+    public void delete(@RequestParam("id") String id) {
         service.delete(id);
     }
 

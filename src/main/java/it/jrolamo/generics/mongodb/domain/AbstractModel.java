@@ -11,5 +11,5 @@ public abstract class AbstractModel {
      *
      * @return
      */
-    public abstract Object getId();
+    public abstract String getId();
 }

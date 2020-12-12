@@ -11,6 +11,6 @@ public abstract class AbstractDTO {
      *
      * @return
      */
-    public abstract Object getId();
+    public abstract String getId();
 
 }

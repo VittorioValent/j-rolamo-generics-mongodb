@@ -28,7 +28,7 @@ import it.jrolamo.generics.mongodb.domain.AbstractModel;
  * @since 0.0.1
  */
 @NoRepositoryBean
-public interface IRepository<Entity extends AbstractModel> extends MongoRepository<Entity, Object>,
+public interface IRepository<Entity extends AbstractModel> extends MongoRepository<Entity, String>,
         QuerydslBinderCustomizer<EntityPath<Entity>>, QuerydslPredicateExecutor<Entity> {
 
     /**

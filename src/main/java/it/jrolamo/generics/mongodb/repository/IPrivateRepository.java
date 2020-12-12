@@ -1,11 +1,13 @@
 package it.jrolamo.generics.mongodb.repository;
 
 import com.querydsl.core.types.Predicate;
-import it.jrolamo.generics.mongodb.annotations.IsOwnerListPostAuth;
-import it.jrolamo.generics.mongodb.domain.AuditModel;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.NoRepositoryBean;
+
+import it.jrolamo.generics.mongodb.annotations.IsOwnerListPostAuth;
+import it.jrolamo.generics.mongodb.domain.AuditModel;
 
 /**
  * Repository to fetch private objects based on logged user in order to keep

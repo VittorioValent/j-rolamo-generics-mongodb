@@ -2,11 +2,6 @@ package it.jrolamo.generics.mongodb.domain;
 
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.MappedSuperclass;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
@@ -23,7 +18,6 @@ import lombok.EqualsAndHashCode;
  * @since 0.0.1
  */
 @Data
-@MappedSuperclass
 @EqualsAndHashCode(callSuper = false)
 public abstract class AuditModel extends AbstractModel {
 
@@ -31,8 +25,6 @@ public abstract class AuditModel extends AbstractModel {
      * Indicates when the object was created first
      */
     @CreatedDate
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(nullable = false, updatable = false)
     protected Date createdOn;
 
     /**
@@ -45,8 +37,6 @@ public abstract class AuditModel extends AbstractModel {
      * Indicates when the object was last
      */
     @LastModifiedDate
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(nullable = false)
     protected Date lastModifiedOn;
 
     /**

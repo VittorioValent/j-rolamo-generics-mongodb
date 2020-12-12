@@ -33,7 +33,7 @@ public interface ICrudService<DTO extends AbstractDTO> {
      *
      * @param id
      */
-    public void delete(Object id);
+    public void delete(String id);
 
     /**
      *
@@ -48,7 +48,7 @@ public interface ICrudService<DTO extends AbstractDTO> {
      * @param entity
      * @return
      */
-    public DTO merge(Object id, DTO entity);
+    public DTO merge(String id, DTO entity);
 
     /**
      *
@@ -63,5 +63,5 @@ public interface ICrudService<DTO extends AbstractDTO> {
      * @param id
      * @return
      */
-    public DTO read(Object id);
+    public DTO read(String id);
 }
