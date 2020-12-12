@@ -3,12 +3,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>it.jrolamo</groupId>
-    <artifactId>j-rolamo-generics</artifactId>
-    <version>0.0.5-SNAPSHOT</version>
+    <artifactId>j-rolamo-generics-mongodb</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>JRolamoGenerics</name>
-    <description>Basic project for Spring Boot</description>
+    <name>JRolamoGenericsMongoDB</name>
+    <description>Basic project for Spring Boot and MongoDB</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
