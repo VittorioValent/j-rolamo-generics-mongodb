@@ -1,6 +1,7 @@
 package it.jrolamo.generics.mongodb.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.querydsl.core.types.Predicate;
 
@@ -76,8 +77,9 @@ public abstract class PublicService<Entity extends AbstractModel, DTO extends Ab
      */
     @Override
     public DTO read(String id) {
-        // return mapper.toDTO(repository.findById(id).orElse(null));
-        return mapper.toDTO(repository.findById(id).get());
+        // return mapper.toDTO(repository.findById(id).orElse(null)); // ZLATAN SAYS => NOT WORK!
+        Optional<Entity> item = repository.findById(id);
+        return item.isPresent() ? mapper.toDTO(item.get()) : null;
     }
 
     /**
