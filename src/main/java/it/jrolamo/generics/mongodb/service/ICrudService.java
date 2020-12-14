@@ -35,6 +35,7 @@ public interface ICrudService<DTO extends AbstractDTO> {
      */
     public void delete(String id);
 
+    public void delete(DTO dto);
     /**
      *
      * @param entity

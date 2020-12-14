@@ -70,6 +70,10 @@ public abstract class PublicService<Entity extends AbstractModel, DTO extends Ab
         repository.deleteById(id);
     }
 
+    @Override
+    public void delete(DTO dto) {
+        repository.delete(mapper.toEntity(dto));
+    }
     /**
      *
      * @param id
