@@ -39,7 +39,7 @@ public abstract class ProtectedCrudController<DTO extends AbstractDTO> extends P
      *
      * @param id
      */
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/delete")
     public void delete(@RequestParam("id") String id) {
         service.delete(id);
     }

@@ -46,7 +46,7 @@ public abstract class PublicReadController<DTO extends AbstractDTO> {
      * @param id
      * @return
      */
-    @GetMapping("/public/read/{id}")
+    @GetMapping("/public/read")
     public DTO read(@RequestParam("id") String id) {
         return service.read(id);
     }
