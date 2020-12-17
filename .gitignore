@@ -12,3 +12,5 @@ buildNumber.properties
 *.project
 *.classpath
 *.settings/
+.settings/org.*.prefs
+.classpath
