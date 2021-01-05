@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import it.jrolamo.generics.mongodb.controller.PrivateCrudController;
 import it.jrolamo.generics.mongodb.domain.AbstractDTO;
+import it.jrolamo.generics.mongodb.domain.GroupCount;
 
 /**
  * All CRUD methods service
@@ -58,6 +59,8 @@ public interface ICrudService<DTO extends AbstractDTO> {
      * @return
      */
     public Page<DTO> getAll(Predicate predicate, Pageable pageable);
+    
+    public Page<GroupCount> getAllGroupBy(Predicate predicate, Pageable pageable, String groupField, String collectionName);
 
     /**
      *
