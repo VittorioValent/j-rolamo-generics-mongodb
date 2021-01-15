@@ -56,7 +56,7 @@ public abstract class PublicService<Entity extends AbstractModel, DTO extends Ab
 
     @Autowired
     private MongoTemplate mongoTemplate;
-    
+
     /**
      *
      * @param dto
@@ -85,6 +85,7 @@ public abstract class PublicService<Entity extends AbstractModel, DTO extends Ab
     public void delete(DTO dto) {
         repository.delete(mapper.toEntity(dto));
     }
+
     /**
      *
      * @param id
@@ -92,9 +93,19 @@ public abstract class PublicService<Entity extends AbstractModel, DTO extends Ab
      */
     @Override
     public DTO read(String id) {
-        // return mapper.toDTO(repository.findById(id).orElse(null)); // ZLATAN SAYS => NOT WORK!
+        // return mapper.toDTO(repository.findById(id).orElse(null)); // ZLATAN SAYS =>
+        // NOT WORK!
         Optional<Entity> item = repository.findById(id);
         return item.isPresent() ? mapper.toDTO(item.get()) : null;
+    }
+
+    /**
+     * @param predicate
+     * @return count of filtered objects
+     */
+    @Override
+    public Long count(Predicate predicate) {
+        return repository.count(predicate);
     }
 
     /**
@@ -133,50 +144,49 @@ public abstract class PublicService<Entity extends AbstractModel, DTO extends Ab
             return mapper.toDTO(repository.findAll(predicate, pageable));
         }
     }
+
     @Override
-    public Page<GroupCount> getAllGroupBy(Predicate predicate, Pageable pageable, String groupField, String collectionName) {
-        
+    public Page<GroupCount> getAllGroupBy(Predicate predicate, Pageable pageable, String groupField,
+            String collectionName) {
+
         List<AggregationOperation> aggregationsCount = extractPredicate(predicate, collectionName);
         aggregationsCount.add(Aggregation.group(groupField).count().as("count"));
 
         final Aggregation aggregationCount = Aggregation.newAggregation(aggregationsCount);
 
-        Long numberElement = Long.valueOf(mongoTemplate.aggregate(aggregationCount, collectionName, GroupCount.class).getMappedResults().size());
-
+        Long numberElement = Long.valueOf(
+                mongoTemplate.aggregate(aggregationCount, collectionName, GroupCount.class).getMappedResults().size());
 
         List<AggregationOperation> aggregations = extractPredicate(predicate, collectionName);
-            aggregations.add(Aggregation.group(groupField).count().as("count"));
-            aggregations.add(Aggregation.skip(Long.valueOf(pageable.getPageNumber() * pageable.getPageSize())));
-            aggregations.add(Aggregation.limit(pageable.getPageSize()));
+        aggregations.add(Aggregation.group(groupField).count().as("count"));
+        aggregations.add(Aggregation.skip(Long.valueOf(pageable.getPageNumber() * pageable.getPageSize())));
+        aggregations.add(Aggregation.limit(pageable.getPageSize()));
 
         final Aggregation aggregation = Aggregation.newAggregation(aggregations);
-    
 
-        
         AggregationResults<GroupCount> result = mongoTemplate.aggregate(aggregation, collectionName, GroupCount.class);
-
 
         return new PageImpl<GroupCount>(result.getMappedResults(), pageable, numberElement);
     }
 
     /**
-     * TAPULLO
-     * TODO se funzionasse sarebbe meglio Aggregation.match(Criteria.byExample(t))
+     * TAPULLO TODO se funzionasse sarebbe meglio
+     * Aggregation.match(Criteria.byExample(t))
      * 
      * @param predicate
      * @return
      */
-    private List<AggregationOperation> extractPredicate(Predicate predicate, String collectionName){
-        System.out.println("PREDICATE "+predicate.toString());
+    private List<AggregationOperation> extractPredicate(Predicate predicate, String collectionName) {
+        System.out.println("PREDICATE " + predicate.toString());
         List<AggregationOperation> list = new ArrayList<>();
-        String stringa = predicate.toString().replace(collectionName+".", "");
-         stringa = stringa.replace(",", "=");
-         stringa = stringa.replace(")", "");
-         stringa = stringa.replace("containsIc(", "");
+        String stringa = predicate.toString().replace(collectionName + ".", "");
+        stringa = stringa.replace(",", "=");
+        stringa = stringa.replace(")", "");
+        stringa = stringa.replace("containsIc(", "");
         String[] listaFiltri = stringa.split("&&");
-        for(String filtro : listaFiltri){
+        for (String filtro : listaFiltri) {
             String[] filter = filtro.trim().split("=");
-            if(filter.length == 2){
+            if (filter.length == 2) {
                 list.add(Aggregation.match(Criteria.where(filter[0].trim()).regex(filter[1].trim())));
             }
         }

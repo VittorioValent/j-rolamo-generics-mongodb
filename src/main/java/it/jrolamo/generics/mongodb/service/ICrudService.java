@@ -36,7 +36,12 @@ public interface ICrudService<DTO extends AbstractDTO> {
      */
     public void delete(String id);
 
+    /**
+     * 
+     * @param dto
+     */
     public void delete(DTO dto);
+
     /**
      *
      * @param entity
@@ -59,8 +64,17 @@ public interface ICrudService<DTO extends AbstractDTO> {
      * @return
      */
     public Page<DTO> getAll(Predicate predicate, Pageable pageable);
-    
-    public Page<GroupCount> getAllGroupBy(Predicate predicate, Pageable pageable, String groupField, String collectionName);
+
+    /**
+     * 
+     * @param predicate
+     * @param pageable
+     * @param groupField
+     * @param collectionName
+     * @return
+     */
+    public Page<GroupCount> getAllGroupBy(Predicate predicate, Pageable pageable, String groupField,
+            String collectionName);
 
     /**
      *
@@ -68,4 +82,6 @@ public interface ICrudService<DTO extends AbstractDTO> {
      * @return
      */
     public DTO read(String id);
+
+    public Long count(Predicate predicate);
 }

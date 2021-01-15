@@ -59,4 +59,7 @@ public abstract class PrivateReadController<DTO extends AbstractDTO> {
     public DTO read(@RequestParam("{id}") String id) {
         return service.read(id);
     }
+
+    @GetMapping("/count")
+    public abstract Long count(Predicate predicate); 
 }

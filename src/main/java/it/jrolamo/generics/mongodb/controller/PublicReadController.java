@@ -42,9 +42,9 @@ public abstract class PublicReadController<DTO extends AbstractDTO> {
     public abstract Page<DTO> getAll(Predicate predicate, Integer pageSize, Integer pageNumber, Direction direction,
             String sortField);
 
- 
     @GetMapping("/public/all/group")
-    public abstract Page<GroupCount> getAllGroupBy(Predicate predicate,Integer pageSize,Integer pageNumber,Direction direction,String sortField,String groupField);
+    public abstract Page<GroupCount> getAllGroupBy(Predicate predicate, Integer pageSize, Integer pageNumber,
+            Direction direction, String sortField, String groupField);
 
     /**
      *
@@ -55,4 +55,7 @@ public abstract class PublicReadController<DTO extends AbstractDTO> {
     public DTO read(@RequestParam("id") String id) {
         return service.read(id);
     }
+
+    @GetMapping("/public/count")
+    public abstract Long count(Predicate predicate);
 }
