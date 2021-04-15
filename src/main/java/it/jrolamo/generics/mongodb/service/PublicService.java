@@ -1,29 +1,25 @@
 package it.jrolamo.generics.mongodb.service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
 import com.querydsl.core.types.Predicate;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
-// import org.springframework.data.jpa.domain.Specification;
-import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.aggregation.Aggregation;
-import org.springframework.data.mongodb.core.aggregation.AggregationOperation;
-import org.springframework.data.mongodb.core.aggregation.AggregationResults;
-import org.springframework.data.mongodb.core.query.Criteria;
-
 import it.jrolamo.generics.mongodb.domain.AbstractDTO;
 import it.jrolamo.generics.mongodb.domain.AbstractModel;
 import it.jrolamo.generics.mongodb.domain.GroupCount;
 import it.jrolamo.generics.mongodb.mapper.IMapper;
 import it.jrolamo.generics.mongodb.repository.IRepository;
 import it.jrolamo.generics.mongodb.utils.PatchUtils;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.aggregation.Aggregation;
+import org.springframework.data.mongodb.core.aggregation.AggregationOperation;
+import org.springframework.data.mongodb.core.aggregation.AggregationResults;
+import org.springframework.data.mongodb.core.query.Criteria;
 
 /**
  * This class implements all CRUD and common buisness methods from
@@ -172,7 +168,7 @@ public abstract class PublicService<Entity extends AbstractModel, DTO extends Ab
     /**
      * TAPULLO TODO se funzionasse sarebbe meglio
      * Aggregation.match(Criteria.byExample(t))
-     * 
+     *
      * @param predicate
      * @return
      */

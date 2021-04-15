@@ -1,11 +1,13 @@
 package it.jrolamo.generics.mongodb.mapper;
 
-import it.jrolamo.generics.mongodb.domain.AbstractDTO;
-import it.jrolamo.generics.mongodb.domain.AbstractModel;
 import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.stereotype.Component;
+
+import it.jrolamo.generics.mongodb.domain.AbstractDTO;
+import it.jrolamo.generics.mongodb.domain.AbstractModel;
 
 /**
  * Interface for all mapper methods implemented by Mapstruct
