@@ -4,6 +4,7 @@ import javax.validation.Valid;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -40,7 +41,7 @@ public abstract class PublicCrudController<DTO extends AbstractDTO> extends Publ
      * @param id
      */
     @DeleteMapping("/public/delete/{id}")
-    public void delete(@RequestParam("id") String id) {
+    public void delete(@PathVariable("id") String id) {
         service.delete(id);
     }
 

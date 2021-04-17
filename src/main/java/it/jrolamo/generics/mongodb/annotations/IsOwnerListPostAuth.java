@@ -18,7 +18,7 @@ import org.springframework.data.mongodb.repository.Query;
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-@Query("{ 'owner' : ?principal.username}")
+@Query("{owner: ?#{ hasRole('ADMIN') ? {$exists:true} : principal.username}}")
 public @interface IsOwnerListPostAuth {
 
 }

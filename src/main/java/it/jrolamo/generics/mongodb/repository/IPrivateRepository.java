@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.NoRepositoryBean;
 
+import it.jrolamo.generics.mongodb.annotations.IsOwnerCountPostAuth;
 import it.jrolamo.generics.mongodb.annotations.IsOwnerListPostAuth;
 import it.jrolamo.generics.mongodb.domain.AuditModel;
 
@@ -41,4 +42,7 @@ public interface IPrivateRepository<Entity extends AuditModel> extends IReposito
     @IsOwnerListPostAuth
     public Page<Entity> findAll(Predicate predicate, Pageable pageable);
 
+    @Override
+    @IsOwnerCountPostAuth
+    public long count(Predicate predicate);
 }

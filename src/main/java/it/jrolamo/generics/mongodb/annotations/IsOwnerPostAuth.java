@@ -17,7 +17,7 @@ import org.springframework.security.access.prepost.PostAuthorize;
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-@PostAuthorize("(returnObject.owner == authentication.principal.username) or (hasRole('ROLE_ADMIN'))")
+@PostAuthorize("(returnObject.owner == authentication.principal.username) or (hasRole('ADMIN'))")
 public @interface IsOwnerPostAuth {
 
 }

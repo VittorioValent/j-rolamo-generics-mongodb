@@ -18,7 +18,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-@PreAuthorize("(#dto.owner == authentication.principal.username) or (hasRole('ROLE_ADMIN'))")
+@PreAuthorize("(#dto.owner == authentication.principal.username) or (hasRole('ADMIN'))")
 public @interface IsOwnerPreAuth {
 
 }

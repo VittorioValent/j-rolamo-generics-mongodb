@@ -7,7 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import it.jrolamo.generics.mongodb.domain.AbstractDTO;
 import it.jrolamo.generics.mongodb.domain.GroupCount;
@@ -44,22 +44,23 @@ public abstract class PrivateReadController<DTO extends AbstractDTO> {
     @CrossOrigin
     @GetMapping("/all")
     public abstract Page<DTO> getAll(Predicate predicate, Integer pageSize, Integer pageNumber, Direction direction,
-    String sortField);
-    
+            String sortField);
+
     @CrossOrigin
     @GetMapping("/all/group")
-    public abstract Page<GroupCount> getAllGroupBy(Predicate predicate,Integer pageSize,Integer pageNumber,Direction direction,String sortField,String groupField);
-        
+    public abstract Page<GroupCount> getAllGroupBy(Predicate predicate, Integer pageSize, Integer pageNumber,
+            Direction direction, String sortField, String groupField);
+
     /**
      *
      * @param id
      * @return
      */
     @GetMapping("/read/{id}")
-    public DTO read(@RequestParam("{id}") String id) {
+    public DTO read(@PathVariable("{id}") String id) {
         return service.read(id);
     }
 
     @GetMapping("/count")
-    public abstract Long count(Predicate predicate); 
+    public abstract Long count(Predicate predicate);
 }

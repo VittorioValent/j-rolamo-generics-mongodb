@@ -12,7 +12,8 @@ import it.jrolamo.generics.mongodb.domain.AbstractModel;
  * @param <DTO>
  * @since 0.0.1
  */
-public abstract class ProtectedService<Entity extends AbstractModel, DTO extends AbstractDTO> extends PublicService<Entity, DTO> {
+public abstract class ProtectedService<Entity extends AbstractModel, DTO extends AbstractDTO>
+        extends PublicService<Entity, DTO> {
 
     /**
      *

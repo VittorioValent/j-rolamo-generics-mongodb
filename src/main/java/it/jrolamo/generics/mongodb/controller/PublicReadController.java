@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import it.jrolamo.generics.mongodb.domain.AbstractDTO;
 import it.jrolamo.generics.mongodb.domain.GroupCount;
@@ -51,8 +51,8 @@ public abstract class PublicReadController<DTO extends AbstractDTO> {
      * @param id
      * @return
      */
-    @GetMapping("/public/read")
-    public DTO read(@RequestParam("id") String id) {
+    @GetMapping("/public/read/{id}")
+    public DTO read(@PathVariable("id") String id) {
         return service.read(id);
     }
 
