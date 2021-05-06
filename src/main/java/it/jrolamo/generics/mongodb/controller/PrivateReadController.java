@@ -57,7 +57,7 @@ public abstract class PrivateReadController<DTO extends AbstractDTO> {
      * @return
      */
     @GetMapping("/read/{id}")
-    public DTO read(@PathVariable("{id}") String id) {
+    public DTO read(@PathVariable("id") String id) {
         return service.read(id);
     }
 
