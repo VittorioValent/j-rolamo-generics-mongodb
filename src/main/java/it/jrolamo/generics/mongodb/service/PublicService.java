@@ -177,7 +177,6 @@ public abstract class PublicService<Entity extends AbstractModel, DTO extends Ab
      * @return
      */
     private List<AggregationOperation> extractPredicate(Predicate predicate, String collectionName) {
-        System.out.println("PREDICATE " + predicate.toString());
         List<AggregationOperation> list = new ArrayList<>();
         String stringa = predicate.toString().replace(collectionName + ".", "");
         stringa = stringa.replace(",", "=");
